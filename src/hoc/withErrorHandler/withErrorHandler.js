@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import Modal from '../../components/UI/Modal/Modal';
 import Aux from '../Auxiliary/Auxiliary';
 
-import axios from '../../axios-orders.js';
-
 const withErrorHandler = (WrappedComponent, axios) => {
   return class extends Component {
     state = {
       error: null
     }
 
-    componentDidMount() {
+    componentWillMount() {
       axios.interceptors.request.use(req => {
         this.setState({error: null});
         return req;
